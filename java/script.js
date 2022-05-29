@@ -37,7 +37,6 @@ const restartButton = document.querySelector('#restart')
 restartButton.addEventListener('click', () => {
 restart()
 news.textContent = ''
-
 })
 
 
