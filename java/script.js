@@ -1,7 +1,80 @@
+<<<<<<< HEAD
 function chooseComputerSelection () {
     number = (Math.floor(Math.random()*10)) 
     if (number < 4) {
         return 'rock' 
+=======
+const score = document.querySelector('#score')
+const score2 = document.querySelector('#score2')
+const news = document.querySelector('#news')
+
+restart()
+
+function restart (){
+    finished = false
+    totalPlayerScore = 0
+    totalComputerScore = 0
+    playerScore = 0
+    computerScore = 0
+    totalRound = 0
+    score2.textContent = totalComputerScore;
+    score.textContent = totalPlayerScore;
+}
+
+const rock = document.querySelector('#rock');
+rock.addEventListener('click', () => {
+    playerSelection = 'rock'
+    checkStart();
+});
+
+const paper = document.querySelector('#paper');
+paper.addEventListener('click', () => {
+    playerSelection = 'paper'
+    checkStart();
+});
+
+const scissors = document.querySelector('#scissors');
+scissors.addEventListener('click', () => {
+    playerSelection = 'scissors'
+    checkStart();
+});
+
+const restartButton = document.querySelector('#restart')
+restartButton.addEventListener('click', () => {
+restart()
+news.textContent = ''
+
+})
+
+
+function checkStart() {
+            if (finished == false) {  
+            let whoWin = askForAnswers()
+            totalRound = totalRound + 1; 
+    
+            if (whoWin == 'playerWin')  {
+                totalPlayerScore = ++playerScore
+                score.textContent = totalPlayerScore;
+            } else if (whoWin == 'computerWin') {
+                totalComputerScore = ++computerScore
+                score2.textContent = totalComputerScore;
+            }
+            if (totalPlayerScore == 5) {
+                news.textContent = 'You won! Congratulations!'
+                finished = true
+            }
+            if (totalComputerScore == 5) {
+                news.textContent = 'Oh no! Computer wins!'
+                finished = true
+            }
+            }
+        }
+
+function chooseComputerSelection () {
+    number = (Math.floor(Math.random()*10)) 
+    if (number < 4) {
+        return 'rock'
+>>>>>>> rps-ui
     } else if (number < 7) {
         return 'paper'
     } else {
@@ -35,7 +108,11 @@ function decideRoundWinner() {
         return[status, message]
 }   else if (playerSelection == 'scissors' && computerSelection == 'rock') {
         let status = 'computerWin'
+<<<<<<< HEAD
         let message = 'You win!  Rocks beats scissors'
+=======
+        let message = 'You lose!  Rock beats scissors'
+>>>>>>> rps-ui
         return[status, message]
 }   else if (playerSelection == 'scissors' && computerSelection == 'paper') {
         let status = 'playerWin'
@@ -45,16 +122,21 @@ function decideRoundWinner() {
         let status = 'tie'
         let message = 'It\'s a tie'
         return[status, message]
+<<<<<<< HEAD
 }   else
         totalRound = totalRound-1;
         console.log(totalRound)
         let status = 'invalid'
         let message = 'Please enter rock, paper, or scissors'
         return[status, message]
+=======
+}
+>>>>>>> rps-ui
 }
 
 function askForAnswers() {
     computerSelection = chooseComputerSelection()
+<<<<<<< HEAD
     let playerSelectionCase = prompt('What is your choice?','')
     if (playerSelectionCase == null) {
         alert('Please enter something')
@@ -103,3 +185,11 @@ function startGame() {
      }
 
 startGame()
+=======
+    let result = decideRoundWinner()
+    let status_beta = result[0]
+    let message_beta = result[1]
+    news.textContent = message_beta
+    return[status_beta]
+}
+>>>>>>> rps-ui
